@@ -1,3 +1,3 @@
-# Whiskey Raffle
+# whiskey-raffle
 
-Conference booth raffle landing page.
+Static raffle landing page for the whiskey booth giveaway.
