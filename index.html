@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Convene26 Raffle — Enter to Win</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #16294a;
+    --navy-2: #1d3358;
+    --navy-line: #2c456e;
+    --sky: #489fe3;
+    --sky-bright: #6cb6ef;
+    --gold: #c9a227;
+    --gold-bright: #e0b73a;
+    --cream: #eef4fb;
+    --cream-dim: #9fb4d0;
+    --red: #e0654a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--navy);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(72,159,227,0.22), transparent 70%),
+      radial-gradient(circle at 50% 120%, rgba(201,162,39,0.12), transparent 60%);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+    line-height: 1.5;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--navy-2);
+    border: 1px solid var(--navy-line);
+    border-radius: 8px;
+    padding: 0 0 36px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.8);
+  }
+
+  .logo-band {
+    background: #f9f9f9;
+    padding: 22px 24px 18px;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+  }
+  .logo-band img {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .body { padding: 32px 38px 0; }
+
+  .eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sky-bright);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.05;
+    text-align: center;
+    color: var(--cream);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--gold-bright);
+  }
+
+  .deck {
+    text-align: center;
+    color: var(--cream-dim);
+    font-size: 13.5px;
+    margin-bottom: 26px;
+    line-height: 1.55;
+  }
+
+  .bottles {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 auto 30px;
+    padding: 10px 0;
+    border-top: 1px solid var(--navy-line);
+    border-bottom: 1px solid var(--navy-line);
+  }
+
+  .field { margin-bottom: 20px; }
+  .row { display: flex; gap: 14px; }
+  .row .field { flex: 1; }
+
+  label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-bottom: 7px;
+  }
+
+  input {
+    width: 100%;
+    background: var(--navy);
+    border: 1px solid var(--navy-line);
+    border-radius: 5px;
+    padding: 12px 13px;
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  input::placeholder { color: #5a719a; }
+  input:focus {
+    outline: none;
+    border-color: var(--sky);
+    box-shadow: 0 0 0 3px rgba(72,159,227,0.2);
+  }
+  input.invalid {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(224,101,74,0.16);
+  }
+
+  .err {
+    color: var(--red);
+    font-size: 11px;
+    margin-top: 6px;
+    min-height: 0;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+    background: var(--sky);
+    color: #08203a;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform 0.12s, background 0.18s;
+  }
+  button:hover:not(:disabled) { background: var(--sky-bright); }
+  button:active:not(:disabled) { transform: translateY(1px); }
+  button:disabled { opacity: 0.6; cursor: default; }
+
+  .fineprint {
+    text-align: center;
+    font-size: 10.5px;
+    color: #5a719a;
+    margin-top: 18px;
+    letter-spacing: 0.03em;
+  }
+
+  .done { text-align: center; padding: 12px 0; }
+  .done .mark {
+    width: 64px; height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .done h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .done p { color: var(--cream-dim); font-size: 13.5px; }
+
+  .toast {
+    color: var(--red);
+    text-align: center;
+    font-size: 12px;
+    margin-top: 14px;
+    min-height: 16px;
+  }
+
+  @media (max-width: 440px) {
+    .body { padding: 28px 26px 0; }
+    h1 { font-size: 30px; }
+    .row { flex-direction: column; gap: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo-band">
+      <img src="logo.png" alt="Big I Arkansas — Convene26, 125th Annual Convention" />
+    </div>
+
+    <div class="body">
+      <div id="form-view">
+        <div class="eyebrow">Booth Raffle</div>
+        <h1>Win the <em>whiskey</em></h1>
+        <p class="deck">Drop your card in the barrel. Two winners will be drawn and contacted at the end of Opening Night.</p>
+        <div class="bottles">Two bottles · Two winners</div>
+
+        <div class="row">
+          <div class="field">
+            <label for="first">First name</label>
+            <input id="first" type="text" autocomplete="given-name" placeholder="Jane" />
+            <div class="err" id="err-first"></div>
+          </div>
+          <div class="field">
+            <label for="last">Last name</label>
+            <input id="last" type="text" autocomplete="family-name" placeholder="Doe" />
+            <div class="err" id="err-last"></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Work email</label>
+          <input id="email" type="email" autocomplete="email" placeholder="jane@company.com" />
+          <div class="err" id="err-email"></div>
+        </div>
+
+        <button id="submit">Enter the draw</button>
+        <div class="toast" id="toast"></div>
+        <p class="fineprint">One entry per person. Winners notified by email.</p>
+      </div>
+
+      <div id="done-view" class="done" style="display:none;">
+        <div class="mark">&#10003;</div>
+        <h2>You're in.</h2>
+        <p>Good luck &mdash; winners are announced at the end of Opening Night.</p>
+      </div>
+    </div>
+  </main>
+
+<script>
+  const ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+
+  const $ = id => document.getElementById(id);
+  const fields = ["first", "last", "email"];
+
+  function setError(id, msg) {
+    $("err-" + id).textContent = msg || "";
+    $(id).classList.toggle("invalid", !!msg);
+  }
+
+  function validate() {
+    let ok = true;
+    const first = $("first").value.trim();
+    const last = $("last").value.trim();
+    const email = $("email").value.trim();
+
+    setError("first", first ? "" : "Required");
+    setError("last", last ? "" : "Required");
+    if (!first) ok = false;
+    if (!last) ok = false;
+
+    if (!email) { setError("email", "Required"); ok = false; }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError("email", "Enter a valid email"); ok = false; }
+    else { setError("email", ""); }
+
+    return ok ? { first, last, email } : null;
+  }
+
+  fields.forEach(id => $(id).addEventListener("input", () => setError(id, "")));
+
+  $("submit").addEventListener("click", async () => {
+    $("toast").textContent = "";
+    const data = validate();
+    if (!data) return;
+
+    if (ENDPOINT === "PASTE_YOUR_APPS_SCRIPT_URL_HERE") {
+      $("toast").textContent = "Setup needed: add your Apps Script URL in the code.";
+      return;
+    }
+
+    const btn = $("submit");
+    btn.disabled = true;
+    btn.textContent = "Entering…";
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(data)
+      });
+      $("form-view").style.display = "none";
+      $("done-view").style.display = "block";
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = "Enter the draw";
+      $("toast").textContent = "Something went wrong — try once more.";
+    }
+  });
+
+  fields.forEach(id => $(id).addEventListener("keydown", e => {
+    if (e.key === "Enter") $("submit").click();
+  }));
+</script>
+</body>
+</html>
